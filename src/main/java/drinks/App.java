@@ -31,5 +31,11 @@ public class App {
         
         Cocktail hurricane = context.getBean("Hurricane", Cocktail.class);
         System.out.println(hurricane.toString());
+        
+        Wine hw = context.getBean("HouseWine", Wine.class);
+        System.out.println(hw.toString());
+        
+        
+        ((FileSystemXmlApplicationContext)context).close();
     }
 }

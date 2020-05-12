@@ -9,6 +9,16 @@ public class Wine extends Drink {
 	  this.setPrice(2.00);		
 	}
 	
+	// init method called after constructor
+	public void happyHour() {
+		System.out.println("Intialization of Wine");
+		this.setPrice(1.50);
+	}
+	
+	public void closingTime() {
+	  System.out.println("Wine Bean being destroyed");  
+	}
+	
 	/**
 	 * toString Method
 	 */

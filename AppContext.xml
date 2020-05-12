@@ -11,6 +11,11 @@
    <!--  draft beer is our default beer -->
    <bean id = "DraftBeer" class = "drinks.model.Beer" />
   
+   <bean id = "HouseWine" class = "drinks.model.Wine" 
+         init-method = "happyHour"
+         destroy-method = "closingTime">
+   </bean>
+   
    <!--  
     house wine is our default wine however we want something else 
     so we set the values of name and price to something different 
