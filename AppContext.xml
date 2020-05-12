@@ -1,0 +1,41 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+   
+   
+   <!--  draft beer is our default beer -->
+   <bean id = "DraftBeer" class = "drinks.model.Beer" />
+  
+   <!--  
+    house wine is our default wine however we want something else 
+    so we set the values of name and price to something different 
+    You could also use an argument constructor set the values by position
+    using <constructor-arg index="0" value="apple" /> but this seems 
+    very messy.
+   -->
+   <bean id = "GoodWine" class = "drinks.model.Wine" >
+     <property name="name" value = "GoodWine" />
+     <property name="price" value = "5.00" />
+   </bean>
+   
+   <!--   -->
+   <bean id = "Hurricane" class = "drinks.model.Cocktail" >
+     <property name="name" value = "Hurricane" />
+     <property name="glass" value = "Hurricane Glass" />
+     <property name="price" value = "7.00" />
+        <property name = "ingredients" >
+     	<map>
+     		<entry key = "Light Rum" value = "One Part Light Rum" />
+     		<entry key = "Dark Rum" value = "One Part Dark Rum" />
+     		<entry key = "Lemon Juice" value = "dash of lemon juice" />
+     		<entry key = "Passion Fruit" value = "One Part Passion Fruit" />
+     	</map>
+     </property>
+   </bean>
+   
+</beans>
