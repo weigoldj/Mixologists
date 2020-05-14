@@ -39,18 +39,21 @@ MyVehicles myVehciles = appContext.getBean("myVehcilesAutowired", MyVehicles.cla
 
 ### Autowire byName
 
->**Bean definitions in AppContext.xml**
-><bean id="ferrari" class="foo.Car" />
+**Bean definitions in AppContext.xml**
+```
+<bean id="ferrari" class="foo.Car" />
 
-><bean id="myVehiclesByName" class="foo.MyVehicles" autowire="byName" />
+<bean id="myVehiclesByName" class="foo.MyVehicles" autowire="byName" />
 
->class MyVehicles {
->  private Car ferrari;
->}
+class MyVehicles {
+  private Car ferrari;
+}
+```
 
 Spring will look to match the bean id with the variable name being used in MyVehicles class.
 
->**how to use autowire btType in your class.**
->MyVehicles myVehciles = appContext.getBean("myVehcilesByName", MyVehicles.class);
-
+**how to use autowire btType in your class.**
+```
+MyVehicles myVehciles = appContext.getBean("myVehcilesByName", MyVehicles.class);
+```
  
