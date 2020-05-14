@@ -23,6 +23,7 @@ Any Explicit configuration overrides any auto-wiring
 ### Autowire byType 
 
 **Bean definitions in AppContext.xml**
+```
 <bean id="car" class="foo.Car" />
 
 <bean id="myVehiclesAutowired" class="foo.MyVehicles" autowire="byType" />
@@ -30,12 +31,13 @@ Any Explicit configuration overrides any auto-wiring
 class MyVehicles {
   private Car car;
 }
+```
 
 When you spring creates an instance of myVehicles class is will look for the bean defined as a car.
-
 **how to use autowire btType in your class.**
+```
 MyVehicles myVehciles = appContext.getBean("myVehcilesAutowired", MyVehicles.class);
-
+```
 
 ### Autowire byName
 
