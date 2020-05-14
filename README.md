@@ -21,6 +21,7 @@ Any Explicit configuration overrides any auto-wiring
 
 
 ### Autowire byType 
+When you spring creates an instance of myVehicles class is will look for the bean defined as a car.
 
 **Bean definitions in AppContext.xml**
 ```
@@ -33,13 +34,14 @@ class MyVehicles {
 }
 ```
 
-When you spring creates an instance of myVehicles class is will look for the bean defined as a car.
 **how to use autowire btType in your class.**
 ```
 MyVehicles myVehciles = appContext.getBean("myVehcilesAutowired", MyVehicles.class);
 ```
 
+
 ### Autowire byName
+Spring will look to match the bean id with the variable name being used in MyVehicles class.
 
 **Bean definitions in AppContext.xml**
 ```
@@ -52,10 +54,60 @@ class MyVehicles {
 }
 ```
 
-Spring will look to match the bean id with the variable name being used in MyVehicles class.
-
 **how to use autowire btType in your class.**
 ```
 MyVehicles myVehciles = appContext.getBean("myVehcilesByName", MyVehicles.class);
 ```
  
+ 
+### Autowire by Constructor
+
+**Bean definitions in AppContext.xml**
+```
+<bean id="ferrari" class="foo.Car" />
+<bean id="autowiredByConstructor" class="foo.MyVehicles" autowire="constructor" />
+
+
+class MyVehicles {
+  private Car daily;
+  
+  public MyVehicles() { }
+  
+  public MyVehciles(Car c) {
+    this.daily = c;
+  }
+}
+```
+
+**how to use autowire by constructor in your class.**
+```
+MyVehicles myVehciles = appContext.getBean("autowiredByConstructor", MyVehicles.class);
+``` 
+
+
+### Default Autowiring 
+
+**Bean definitions in AppContext.xml***
+In the bean xmlns definition you can tell Spring which autowire should be used if no wiring is 
+specified. In this example spring will use autowire byType to configure our bean 
+
+```
+<beans xmlns ....
+   default-autowire="byType" >
+
+<bean id="daily" class="foo.Car" />
+<bean id="autowired" class="foo.MyVehicles" />
+
+
+class MyVehicles {
+  private Car daily;
+  
+  public MyVehicles() { }
+  
+}
+```
+
+**how to use autowire by constructor in your class.**
+```
+MyVehicles myVehciles = appContext.getBean("autowired", MyVehicles.class);
+``` 
